@@ -1,0 +1,21 @@
+<UserControl x:Class="vstupna.Views.FileLoadView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:vstupna.ViewModels">
+	<Grid Margin="10">
+		<StackPanel>
+			<!-- Title -->
+			<TextBlock Text="Завантаження CSV файлу"
+					   FontSize="16"
+					   FontWeight="Bold"
+					   Margin="0,0,0,10"/>
+			<!-- Button to load file -->
+			<Button Content="Обрати файл"
+					Command="{Binding LoadFileCommand}"
+					Width="150"
+					Margin="0,0,0,10"/>
+			<!-- Status message -->
+			<TextBlock Text="{Binding StatusMessage}" />
+		</StackPanel>
+	</Grid>
+</UserControl>

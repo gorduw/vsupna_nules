@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="vstupna.Views.CsvPreviewView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:vstupna.ViewModels">
+    <UserControl.DataContext>
+        <vm:CsvPreviewViewModel />
+    </UserControl.DataContext>
+
+    <Grid Margin="10">
+        <!-- Ви можете додати додаткові елементи управління для фільтрації або групування -->
+        <DataGrid ItemsSource="{Binding CsvRecords}" AutoGenerateColumns="False" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <!-- Колонка для Імені -->
+                <DataGridTextColumn Header="Ім'я" Binding="{Binding FirstName, Mode=TwoWay}" />
+                <!-- Колонка для Прізвища -->
+                <DataGridTextColumn Header="Прізвище" Binding="{Binding LastName, Mode=TwoWay}" />
+                <!-- Колонка для Спеціальності з редагуванням через ComboBox -->
+                <DataGridTemplateColumn Header="Спеціальність">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Specialty}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox ItemsSource="{Binding DataContext.SpecialtyOptions, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                      Text="{Binding Specialty, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                      IsEditable="True" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <!-- За потреби додайте інші колонки, наприклад, для інших полів із StudentRecord -->
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

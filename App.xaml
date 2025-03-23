@@ -1,0 +1,24 @@
+﻿<Application x:Class="vstupna.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:vstupna.ViewModels"
+             xmlns:views="clr-namespace:vstupna.Views"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <DataTemplate DataType="{x:Type vm:FileLoadViewModel}">
+            <views:FileLoadView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:SearchViewModel}">
+            <views:SearchView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:DocumentsViewModel}">
+            <views:DocumentsView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:DocumentEditorViewModel}">
+            <views:DocumentEditorView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:CsvPreviewViewModel}">
+            <views:CsvPreviewView />
+        </DataTemplate>
+    </Application.Resources>
+</Application>
